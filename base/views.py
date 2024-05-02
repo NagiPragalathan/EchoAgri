@@ -35,3 +35,19 @@ def weatherBasedFeedTheSeed(request):
         return render(request, 'weatherBasedFeedTheSeed.html', {'soil_name': soil_name, 'description': description, "recommendation": response.choices[0].message.content})
     return render(request, 'weatherBasedFeedTheSeed.html')
 
+def Pricing(request):
+    if request.method == 'POST':
+        description = request.POST.get('description')
+        client = Client()
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "System", "content": "You are a use full ai to give the cost of the process and budget by given description response in english"},
+                {"role": "user", "content": f"the idea is { description } Now give me the cost and budgets about the  given idea."},
+                ],
+        )
+        return render(request, 'Pricing.html', {'description': description, "recommendation": response.choices[0].message.content})
+    return render(request, 'Pricing.html')
+
+def home(request):
+    return render(request, "index.html")

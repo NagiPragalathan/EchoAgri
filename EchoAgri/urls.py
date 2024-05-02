@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from base.views import SoilBasedFeedTheSeed, weatherBasedFeedTheSeed
+from base.views import SoilBasedFeedTheSeed, weatherBasedFeedTheSeed, Pricing, home
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("solid_type", SoilBasedFeedTheSeed, name="SoilBasedFeedTheSeed"),
     path("weather", weatherBasedFeedTheSeed, name="weatherBasedFeedTheSeed"),
+    path("pricing", Pricing, name="Pricing"),
+    path("", home, name="home"),
 ]
