@@ -1,9 +1,3 @@
-#!/bin/bash
-#!/bin/bash
-
-
-# Install dependencies
-python -m pip install -r requirements.txt
-
-# Run Django collectstatic command
-python manage.py collectstatic --noinput
+# build_files.sh
+pip install -r requirements.txt
+python3.9 manage.py collectstatic
